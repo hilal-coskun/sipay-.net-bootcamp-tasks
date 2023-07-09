@@ -21,7 +21,10 @@ namespace development_restful_api.Controllers
         public IActionResult Get()
         {
             var products = _productList.Products;
-            if(products == null || products.Count == 0) { return NotFound(); }
+            if(products == null)
+            { 
+                return NotFound(); 
+            }
 
             return Ok(products);
         }
@@ -49,7 +52,7 @@ namespace development_restful_api.Controllers
 
             try
             {
-                int newId = _productList.Products.Max(p => p.Id) + 1; // Yeni bir ID oluşturma
+                int newId = _productList.Products.Max(p => p.Id) + 1;
                 product.Id = newId;
 
                 _productList.Products.Add(product);
@@ -78,7 +81,6 @@ namespace development_restful_api.Controllers
                 {
                     existingProduct.Name = product.Name;
                     existingProduct.Price = product.Price;
-                    // Diğer güncelleme işlemleri...
 
                     return NoContent();
                 }
