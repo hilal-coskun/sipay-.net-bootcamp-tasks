@@ -1,6 +1,9 @@
 ﻿using AutoMapper;
+using FluentValidation;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 using week_3_assignment.BookOperations.CreateBook;
 using week_3_assignment.BookOperations.DeleteBook;
 using week_3_assignment.BookOperations.GetBookDetails;
@@ -45,6 +48,9 @@ namespace week_3_assignment.Controllers
 			try
 			{
 				query.bookId = id;
+				GetBookDetailQueryValidator validationRules = new GetBookDetailQueryValidator();
+				validationRules.ValidateAndThrow(query);
+
 				result = query.Handle();
 			}
 			catch (Exception ex)
@@ -64,7 +70,9 @@ namespace week_3_assignment.Controllers
 			try
 			{
 				command.Model = entity;
-				command.Handle();
+				CreateBookCommandValidator validationRules = new CreateBookCommandValidator();
+				validationRules.ValidateAndThrow(command);
+
 			}
 			catch (Exception ex)
 			{
@@ -84,6 +92,10 @@ namespace week_3_assignment.Controllers
 			{
 				command.bookId = id;
 				command.Model = entity;
+
+				UpdateBookCommandValidator validationRules = new UpdateBookCommandValidator();
+				validationRules.ValidateAndThrow(command);
+
 				command.Handle();
 			}
 			catch (Exception ex)
@@ -101,6 +113,10 @@ namespace week_3_assignment.Controllers
 			try
 			{
 				command.bookId = id;
+
+				DeleteBookCommandValidator validationRules = new DeleteBookCommandValidator();
+				validationRules.ValidateAndThrow(command);
+
 				command.Handle();
 			}
 			catch (Exception ex)
