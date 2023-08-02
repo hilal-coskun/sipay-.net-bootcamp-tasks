@@ -1,10 +1,10 @@
 ﻿using FluentValidation;
-using week_3_assignment.BookOperations.DeleteBook;
+using week_3_assignment.Application.BookOperations.DeleteBook;
 
-namespace week_3_assignment.BookOperations.UpdateBook
+namespace week_3_assignment.Application.BookOperations.UpdateBook
 {
-	public class UpdateBookCommandValidator : AbstractValidator<UpdateBookCommand>
-	{
+    public class UpdateBookCommandValidator : AbstractValidator<UpdateBookCommand>
+    {
         public UpdateBookCommandValidator()
         {
             RuleFor(command => command.bookId).GreaterThan(0);

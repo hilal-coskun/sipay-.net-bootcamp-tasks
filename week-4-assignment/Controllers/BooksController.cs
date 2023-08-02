@@ -1,19 +1,19 @@
-﻿ using AutoMapper;
+﻿using AutoMapper;
 using FluentValidation;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
-using week_3_assignment.BookOperations.CreateBook;
-using week_3_assignment.BookOperations.DeleteBook;
-using week_3_assignment.BookOperations.GetBookDetails;
-using week_3_assignment.BookOperations.GetBooks;
-using week_3_assignment.BookOperations.UpdateBook;
+using week_3_assignment.Application.BookOperations.CreateBook;
+using week_3_assignment.Application.BookOperations.DeleteBook;
+using week_3_assignment.Application.BookOperations.GetBookDetails;
+using week_3_assignment.Application.BookOperations.GetBooks;
+using week_3_assignment.Application.BookOperations.UpdateBook;
 using week_3_assignment.DbOperations;
 using week_3_assignment.Entities;
-using static week_3_assignment.BookOperations.CreateBook.CreateBookCommand;
-using static week_3_assignment.BookOperations.GetBookDetails.GetBookDetailQuery;
-using static week_3_assignment.BookOperations.UpdateBook.UpdateBookCommand;
+using static week_3_assignment.Application.BookOperations.CreateBook.CreateBookCommand;
+using static week_3_assignment.Application.BookOperations.GetBookDetails.GetBookDetailQuery;
+using static week_3_assignment.Application.BookOperations.UpdateBook.UpdateBookCommand;
 
 namespace week_3_assignment.Controllers
 {
@@ -21,10 +21,10 @@ namespace week_3_assignment.Controllers
 	[ApiController]
 	public class BooksController : ControllerBase
 	{
-		private readonly BookStoreDbContext _context;
+		private readonly IBookStoreDbContext _context;
 		private readonly IMapper _mapper;
 
-		public BooksController(BookStoreDbContext context, IMapper mapper)
+		public BooksController(IBookStoreDbContext context, IMapper mapper)
 		{
 			_context = context;
 			_mapper = mapper;

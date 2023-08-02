@@ -1,9 +1,9 @@
 ﻿using FluentValidation;
 
-namespace week_3_assignment.BookOperations.CreateBook
+namespace week_3_assignment.Application.BookOperations.CreateBook
 {
-	public class CreateBookCommandValidator : AbstractValidator<CreateBookCommand>
-	{
+    public class CreateBookCommandValidator : AbstractValidator<CreateBookCommand>
+    {
 
         public CreateBookCommandValidator()
         {
